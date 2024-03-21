@@ -6,7 +6,9 @@ import static org.firstinspires.ftc.teamcode.Vision.BlueColorProcessor.rightBlue
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -37,8 +39,6 @@ public class AprilTagIntegrationTest extends v3autoBase {
         public double y = 0;
         public double z = 0;
         public double yaw = 0;
-
-        public BNO055IMU imu;
         private String webcam = "Webcam ";
         public Orientation robotTheta;
         public YawPitchRollAngles yawPitchRollAngles = new YawPitchRollAngles(AngleUnit.DEGREES, 0, 0,0, (long) 2);
@@ -65,6 +65,18 @@ public class AprilTagIntegrationTest extends v3autoBase {
     @Override
     public void runOpMode() {
         super.runOpMode();
+        robot.imu.initialize(
+                new IMU.Parameters(
+                        new RevHubOrientationOnRobot(
+                                new Orientation(
+                                        AxesReference.INTRINSIC,
+                                        AxesOrder.ZYX,
+                                        AngleUnit.DEGREES,
+                                        25,
+                                        90,
+                                        0,
+                                        0  // acquisitionTime, not used
+                                ))));
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
         pipeline = "propRed";
         /*

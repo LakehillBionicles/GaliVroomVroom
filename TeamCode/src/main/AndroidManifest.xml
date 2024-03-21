@@ -7,6 +7,18 @@
 <!-- The package name here determines the package for your R class and your BuildConfig class -->
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <application
-        android:icon="@drawable/ic_launcher" />
+
+    <application>
+        <activity
+            android:name = "org.firstinspires.ftc.robotcontroller.internal.PermissionValidatorWrapper"
+            android:exported = "false">
+            ...
+        </activity>
+        <activity
+            android:name = "org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity"
+            android:exported = "false">
+            ...
+        </activity>
+    </application>
 </manifest>
+

@@ -42,7 +42,6 @@ public class v3autoBase extends LinearOpMode {
     public org.firstinspires.ftc.teamcode.Vision.BlueColorProcessor BlueColorProcessor;
     public String  propPos = "notSeen";
     public static String robotPosition = "notSeen";
-    public BNO055IMU imu;
     private String webcam1 = "Webcam 1";
     public Orientation robotTheta;
     static final double FEET_PER_METER = 3.28084;
